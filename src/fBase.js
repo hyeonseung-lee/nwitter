@@ -1,5 +1,6 @@
 // Firebase App (the core Firebase SDK) is always required and must be listed first
-import firebase from "firebase/compat/app";
+import * as firebase from "firebase/app";
+import * as auth from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -12,4 +13,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-export default firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
+
+export const authService = auth.getAuth();
+
+export const firebaseAuth = auth;
+export const firebaseInstance = firebase;
