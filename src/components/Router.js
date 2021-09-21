@@ -10,15 +10,16 @@ import Home from "routes/Home";
 import Navigation from "components/Navigation";
 import Profile from "routes/Profile";
 
-const AppRouter = (isLoggedIn) => {
+const AppRouter = ({ isLoggedIn, userObj }) => {
+  // console.log("Router.js", userObj);
   return (
     <Router>
-      {isLoggedIn.isLoggedIn && <Navigation />}
+      {isLoggedIn && <Navigation />}
       <Switch>
-        {isLoggedIn.isLoggedIn ? (
+        {isLoggedIn ? (
           <>
             <Route exact path="/">
-              <Home />
+              <Home userObj={userObj} />
             </Route>
             <Route exact path="/profile">
               <Profile />
