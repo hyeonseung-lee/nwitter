@@ -11,7 +11,6 @@ import Navigation from "components/Navigation";
 import Profile from "routes/Profile";
 
 const AppRouter = ({ isLoggedIn, userObj }) => {
-  // console.log("Router.js", userObj);
   return (
     <Router>
       {isLoggedIn && <Navigation />}
