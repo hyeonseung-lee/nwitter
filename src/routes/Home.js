@@ -39,11 +39,7 @@ const Home = ({ userObj }) => {
       const attachmentRef = ref(storageService, `${userObj.uid}/${uuidv4()}`);
 
       // upload image to firebase storage
-      const response = await uploadString(
-        attachmentRef,
-        attachment,
-        "data_url"
-      );
+      await uploadString(attachmentRef, attachment, "data_url");
       const attachmentUrl = await getDownloadURL(attachmentRef);
       // create nweet object
       nweetObject = {
