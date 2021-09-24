@@ -6,6 +6,8 @@ import { updateProfile } from "@firebase/auth";
 function App() {
   const [init, setInit] = useState(false);
   const [userObj, setUserObj] = useState(null);
+
+  // reflect the change on the display.
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
@@ -21,8 +23,14 @@ function App() {
     });
   }, []);
 
+  // reflect the change of name immmediately on screen.
   const refreshUser = () => {
-    setUserObj(authService.currentUser);
+    const user = authService.currentUser;
+    setUserObj({
+      displayName: user.displayName,
+      uid: user.uid,
+      updateProfile: (args) => updateProfile(user, args),
+    });
   };
   return (
     <>
