@@ -100,27 +100,32 @@ const NweetFactory = ({ userObj }) => {
     clearFileInput();
   };
   return (
-    <form onSubmit={onSubmit}>
-      <input
-        type="text"
-        value={nweet}
-        onChange={onChange}
-        placeholder="What's on your mind?"
-        maxLength={120}
-      />
-      <input
-        type="file"
-        accept="image/*"
-        onChange={onFileChange}
-        ref={fileInput}
-      />
-      <input type="submit" value="nweet" />
-      {attachment && (
-        <div>
-          <img src={attachment} width="80px" height="80px" />
-          <button onClick={onClearAttachment}>Clear</button>
-        </div>
-      )}
+    <form onSubmit={onSubmit} className="">
+      <div className="mt-10 flex">
+        <input
+          type="text"
+          value={nweet}
+          onChange={onChange}
+          placeholder="Why are they lovely?"
+          maxLength={500}
+          className="w-full h-20  rounded-t-3xl rounded-l-3xl text-center"
+        />
+        <img src={attachment} width="220px" height="220px" />
+        <input type="submit" value="Meow" />
+      </div>
+      <div className="flex">
+        <input
+          type="file"
+          accept="image/*"
+          onChange={onFileChange}
+          ref={fileInput}
+        />
+        {attachment && (
+          <div>
+            <button onClick={onClearAttachment}>Clear</button>
+          </div>
+        )}
+      </div>
     </form>
   );
 };

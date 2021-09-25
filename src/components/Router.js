@@ -7,8 +7,8 @@ import {
 } from "react-router-dom";
 import Auth from "routes/Auth";
 import Home from "routes/Home";
-import Navigation from "components/Navigation";
 import Profile from "routes/Profile";
+import Navigation from "./Navigation";
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
   return (
@@ -28,7 +28,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
         ) : (
           <>
             <Route exact path="/">
-              <Auth />
+              <Auth isLoggedIn={isLoggedIn} />
             </Route>
             <Redirect from="*" to="/" />
           </>

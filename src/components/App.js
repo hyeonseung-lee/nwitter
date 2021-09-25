@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import AppRouter from "components/Router";
 import { authService } from "fBase";
 import { updateProfile } from "@firebase/auth";
+import { BigBannerAtLogIn } from "./Banner";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -34,16 +35,22 @@ function App() {
   };
   return (
     <>
-      {init ? (
-        <AppRouter
-          refreshUser={refreshUser}
-          isLoggedIn={Boolean(userObj)}
-          userObj={userObj}
-        />
-      ) : (
-        "Initializing..."
-      )}
-      <footer>&copy; {new Date().getFullYear()} Nwitter</footer>
+      {/* main */}
+      <div className={Boolean(userObj) ? "mx-40" : "mx-96"}>
+        <div className="">
+          {init ? (
+            <AppRouter
+              refreshUser={refreshUser}
+              isLoggedIn={Boolean(userObj)}
+              userObj={userObj}
+            />
+          ) : (
+            "Initializing..."
+          )}
+        </div>
+        {/* bottom */}
+        <footer className="">&copy; {new Date().getFullYear()} Nwitter</footer>
+      </div>
     </>
   );
 }

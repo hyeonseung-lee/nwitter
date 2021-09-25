@@ -1,4 +1,5 @@
 import { collection, onSnapshot } from "@firebase/firestore";
+import { NomalBannerAtHome } from "components/Banner";
 import Nweet from "components/Nweet";
 import NweetFactory from "components/NweetFactory";
 import { dbService } from "fBase";
