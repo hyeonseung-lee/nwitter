@@ -54,7 +54,10 @@ const AuthForm = () => {
   return (
     <>
       <div className="mt-40">
-        <form onSubmit={onSubmit} className="flex mb-3 rounded-lg">
+        <form
+          onSubmit={onSubmit}
+          className="flex mb-3 rounded-lg border-2 border-gray-200"
+        >
           <div className="w-4/5">
             <input
               name="email"
@@ -83,7 +86,7 @@ const AuthForm = () => {
           {error}
         </form>
 
-        <div className="">
+        <div className="mx-1">
           <span>
             {newAccount
               ? "Do you already have an account? "

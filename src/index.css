@@ -7,10 +7,18 @@
 body {
   @apply h-screen w-screen;
   font-family: "Noto Sans KR", sans-serif;
-  background-color: #f9d5a7;
+  background-color: whitesmoke;
 }
 
 li,
 a {
   @apply block;
+}
+
+button {
+  @apply bg-gray-200 rounded-2xl text-center;
+}
+
+.basicBox {
+  @apply border-2 border-gray-200 bg-white my-3 p-5;
 }

@@ -96,7 +96,7 @@ const NweetFactory = ({ userObj }) => {
     clearFileInput();
   };
   return (
-    <div className="mt-10 ml-5 h-1/4">
+    <div className="basicBox h-1/4">
       <form onSubmit={onSubmit} className="flex h-full">
         <div className="flex-col w-full">
           <input
@@ -105,7 +105,7 @@ const NweetFactory = ({ userObj }) => {
             onChange={onChange}
             placeholder="Why are they lovely?"
             maxLength={500}
-            className="w-full h-2/4 mb-4 rounded-t-3xl rounded-l-3xl text-center"
+            className="w-full h-2/4 mb-4 rounded-t-3xl rounded-l-3xl text-center bg-gray-100"
           />
           <div className="w-full h-1/6 flex justify-between">
             <input
@@ -116,16 +116,13 @@ const NweetFactory = ({ userObj }) => {
               className=""
             />
             {attachment && (
-              <button
-                onClick={onClearAttachment}
-                className="w-1/6 bg-yellow-100 rounded-full text-center"
-              >
+              <button onClick={onClearAttachment} className="w-1/6">
                 Clear
               </button>
             )}
           </div>
           <input
-            className="text-xl w-full mt-3 h-1/6 bg-gray-200 rounded-2xl text-center"
+            className="text-xl w-full h-1/6 mt-3 "
             type="submit"
             value="🐱 Meow 🐱"
           />

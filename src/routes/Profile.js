@@ -9,6 +9,7 @@ import {
 import { authService, dbService, firebaseAuth } from "fBase";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
+import { GetNweetsOnProfile } from "./Home";
 
 const Profile = ({ refreshUser, userObj }) => {
   const history = useHistory();
@@ -69,16 +70,30 @@ const Profile = ({ refreshUser, userObj }) => {
 
   return (
     <>
-      <form onSubmit={onSubmit}>
-        <input
-          onChange={onChange}
-          type="text"
-          placeholder="Display name"
-          value={newDisplayName}
-        />
-        <input type="submit" value="Update Profile" />
-      </form>
-      <button onClick={onLogOutClick}>Log Out</button>
+      <div className="basicBox flex-col">
+        <a className="text-3xl mb-6 mx-2">Edit profile</a>
+        <div className="flex justify-between mx-3">
+          <form
+            onSubmit={onSubmit}
+            className="w-3/5 h-10 border-2 border-gray-200"
+          >
+            <input
+              onChange={onChange}
+              type="text"
+              placeholder="Display name"
+              value={newDisplayName}
+              className="w-2/3 h-9 text-center"
+            />
+            <input type="submit" value="Update Profile" className="w-1/3 h-9" />
+          </form>
+        </div>
+        <div className="w-full flex justify-end mt-10">
+          <button onClick={onLogOutClick} className="w-1/5 h-8">
+            Log Out
+          </button>
+        </div>
+      </div>
+      <GetNweetsOnProfile userObj={userObj} />
     </>
   );
 };

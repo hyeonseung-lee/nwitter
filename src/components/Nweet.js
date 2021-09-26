@@ -4,6 +4,7 @@ import { dbService, storageService } from "fBase";
 import React, { useState } from "react";
 
 const Nweet = ({ nweetObj, isOwner }) => {
+  console.log(nweetObj);
   const [editing, setEditing] = useState(false);
   const [newNweet, setNewNweet] = useState(nweetObj.text);
 
@@ -30,7 +31,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
     setNewNweet(value);
   };
   return (
-    <div key={nweetObj.id}>
+    <div key={nweetObj.id} className="basicBox">
       {editing ? (
         <>
           {isOwner && (
@@ -50,18 +51,33 @@ const Nweet = ({ nweetObj, isOwner }) => {
           )}
         </>
       ) : (
-        <>
-          <h4>{nweetObj.text}</h4>
-          {nweetObj.attachmentUrl && (
-            <img src={nweetObj.attachmentUrl} width="50px" height="50px" />
-          )}
-          {isOwner && (
-            <>
-              <button onClick={onDeleteClick}>Delete nweet</button>
-              <button onClick={toggleEditing}>Edit nweet</button>
-            </>
-          )}
-        </>
+        <div className="flex">
+          <div className="w-1/2">
+            {nweetObj.attachmentUrl && (
+              <img
+                src={nweetObj.attachmentUrl}
+                className="rounded-3xl object-cover"
+              />
+            )}
+          </div>
+          <div className="mx-5 w-1/2 flex-col justify-center">
+            <div className="h-5/6 text-2xl text-center align-middle">
+              {nweetObj.text}
+            </div>
+            {isOwner ? (
+              <div className="w-full h-1/6 flex justify-between">
+                <button className="w-full mx-1 text-xl" onClick={onDeleteClick}>
+                  Delete
+                </button>
+                <button className="w-full mx-1 text-xl" onClick={toggleEditing}>
+                  Edit
+                </button>
+              </div>
+            ) : (
+              <div>{nweetObj.createdId}</div>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );

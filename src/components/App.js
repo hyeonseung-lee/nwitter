@@ -36,7 +36,7 @@ function App() {
   return (
     <>
       {/* main */}
-      <div className={Boolean(userObj) ? "mx-40 h-screen" : "mx-96"}>
+      <div className={Boolean(userObj) ? "h-screen" : "mx-96"}>
         <div className="h-full">
           {init ? (
             <AppRouter
@@ -49,7 +49,11 @@ function App() {
           )}
         </div>
         {/* bottom */}
-        <footer className="">&copy; {new Date().getFullYear()} Nwitter</footer>
+        <footer className="fixed bottom-2 right-3">
+          <a>V.beta 21.09.26</a>
+          <a>&copy; {new Date().getFullYear()} Nwitter Clone Competition</a>
+          <a>📧 dlgustmd3590@gmail.com</a>
+        </footer>
       </div>
     </>
   );
