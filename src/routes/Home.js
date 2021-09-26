@@ -19,7 +19,7 @@ const Home = ({ userObj }) => {
   }, []);
 
   return (
-    <div>
+    <div className="w-2/3 h-full">
       {/* form to make new nweet */}
       <NweetFactory userObj={userObj} />
 

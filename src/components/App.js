@@ -36,8 +36,8 @@ function App() {
   return (
     <>
       {/* main */}
-      <div className={Boolean(userObj) ? "mx-40" : "mx-96"}>
-        <div className="">
+      <div className={Boolean(userObj) ? "mx-40 h-screen" : "mx-96"}>
+        <div className="h-full">
           {init ? (
             <AppRouter
               refreshUser={refreshUser}

@@ -36,38 +36,34 @@ const NweetFactory = ({ userObj }) => {
         creatorId: userObj.uid,
         attachmentUrl,
       };
-    } else {
-      // no image
-      // create nweet object
-      nweetObject = {
-        text: nweet,
-        createdAt: Date.now(),
-        creatorId: userObj.uid,
-      };
     }
 
     // upload nweet
     try {
-      if (nweet.length > 0) {
+      if (nweet.length > 0 && attachment) {
         const docRef = await addDoc(
           collection(dbService, "nweets"),
           nweetObject
         );
         console.log("Document written with ID: ", docRef.id);
         alert("Thank you for uploading");
-      } else {
+        setNweet("");
+        setAttachment("");
+        clearFileInput();
+      } else if (nweet.length === 0) {
         // there is not any text
         console.log("please type!");
         alert("please type!");
+      } else {
+        // no image
+        console.log("please choose image!");
+        alert("please choose image!");
       }
     } catch (e) {
       // catch error (no case yet.)
       console.log("Error adding document: ", e);
       alert("Error adding document: ", e);
     }
-    setNweet("");
-    setAttachment("");
-    clearFileInput();
   };
 
   // set nweet text by listening event
@@ -100,33 +96,46 @@ const NweetFactory = ({ userObj }) => {
     clearFileInput();
   };
   return (
-    <form onSubmit={onSubmit} className="">
-      <div className="mt-10 flex">
-        <input
-          type="text"
-          value={nweet}
-          onChange={onChange}
-          placeholder="Why are they lovely?"
-          maxLength={500}
-          className="w-full h-20  rounded-t-3xl rounded-l-3xl text-center"
-        />
-        <img src={attachment} width="220px" height="220px" />
-        <input type="submit" value="Meow" />
-      </div>
-      <div className="flex">
-        <input
-          type="file"
-          accept="image/*"
-          onChange={onFileChange}
-          ref={fileInput}
-        />
-        {attachment && (
-          <div>
-            <button onClick={onClearAttachment}>Clear</button>
+    <div className="mt-10 ml-5 h-1/4">
+      <form onSubmit={onSubmit} className="flex h-full">
+        <div className="flex-col w-full">
+          <input
+            type="text"
+            value={nweet}
+            onChange={onChange}
+            placeholder="Why are they lovely?"
+            maxLength={500}
+            className="w-full h-2/4 mb-4 rounded-t-3xl rounded-l-3xl text-center"
+          />
+          <div className="w-full h-1/6 flex justify-between">
+            <input
+              type="file"
+              accept="image/*"
+              onChange={onFileChange}
+              ref={fileInput}
+              className=""
+            />
+            {attachment && (
+              <button
+                onClick={onClearAttachment}
+                className="w-1/6 bg-yellow-100 rounded-full text-center"
+              >
+                Clear
+              </button>
+            )}
           </div>
-        )}
-      </div>
-    </form>
+          <input
+            className="text-xl w-full mt-3 h-1/6 bg-gray-200 rounded-2xl text-center"
+            type="submit"
+            value="🐱 Meow 🐱"
+          />
+        </div>
+        <img
+          src={attachment}
+          className="flex w-2/6  ml-5 rounded-3xl object-cover"
+        />
+      </form>
+    </div>
   );
 };
 export default NweetFactory;
